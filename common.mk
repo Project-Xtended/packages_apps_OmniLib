@@ -52,7 +52,7 @@ LOCAL_AAPT_FLAGS += --extra-packages android.support.v14.preference
 LOCAL_STATIC_JAVA_LIBRARIES += android-support-v14-preference
 endif
 
-LOCAL_AAPT_FLAGS += --auto-add-overlay --extra-packages com.android.settingslib
+LOCAL_AAPT_FLAGS += --auto-add-overlay --extra-packages com.android.omnilib
 
 LOCAL_STATIC_JAVA_LIBRARIES += \
     android-support-annotations \
