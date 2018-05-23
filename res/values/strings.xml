@@ -27,4 +27,6 @@
     <string name="not_ready_summary">Resolving...</string>
     <string name="resolve_failed_summary">Resolving app failed</string>
     <string name="choose_app">Choose app</string>
+    <string name="led_color_green">Green</string>
+    <string name="led_color_red">Red</string>
 </resources>
