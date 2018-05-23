@@ -44,9 +44,9 @@ import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 import org.omnirom.omnilib.R;
-import org.omnirom.omnigears.ui.ColorPanelView;
-import org.omnirom.omnigears.ui.ColorPickerView;
-import org.omnirom.omnigears.ui.ColorPickerView.OnColorChangedListener;
+import org.omnirom.omnilib.ui.ColorPanelView;
+import org.omnirom.omnilib.ui.ColorPickerView;
+import org.omnirom.omnilib.ui.ColorPickerView.OnColorChangedListener;
 
 import java.util.ArrayList;
 import java.util.IllegalFormatException;
