@@ -21,7 +21,7 @@
     android:paddingTop="@dimen/alert_dialog_padding_material"
     android:paddingStart="@dimen/alert_dialog_padding_material"
     android:paddingEnd="@dimen/alert_dialog_padding_material" >
-    <org.omnirom.omnigears.ui.ColorPickerView
+    <org.omnirom.omnilib.ui.ColorPickerView
         android:id="@+id/color_picker_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
             android:digits="0123456789ABCDEFabcdef"
             android:inputType="textNoSuggestions"
             android:maxLength="6" />
-        <org.omnirom.omnigears.ui.ColorPanelView
+        <org.omnirom.omnilib.ui.ColorPanelView
             android:id="@+id/color_panel"
             android:layout_width="0px"
             android:layout_height="match_parent"
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="0.5" />
-        <org.omnirom.omnigears.ui.ColorPanelView
+        <org.omnirom.omnilib.ui.ColorPanelView
             android:id="@+id/color_list_panel"
             android:layout_width="0px"
             android:layout_height="40dp"
