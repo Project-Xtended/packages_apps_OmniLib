@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<!--  Copyright (C) 2013 The OmniROM Project
-
-  Parts Copyright (C) 2012-2013 The CyanogenMod Project
+<!--  Copyright (C) 2016 The OmniROM Project
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,14 +15,17 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  -->
 
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string-array name="entries_led_colors" translatable="false">
-        <item>@string/led_color_green</item>
-        <item>@string/led_color_red</item>
-    </string-array>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/alert_dialog_padding_material"
+    android:paddingEnd="@dimen/alert_dialog_padding_material">
 
-    <string-array name="values_led_colors" translatable="false">
-        <item>#FF00FF00</item>
-        <item>#FFFF0000</item>
-    </string-array>
-</resources>
+    <ListView
+        android:id="@+id/action_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@null" />
+</LinearLayout>

@@ -13,16 +13,13 @@ LOCAL_SHARED_ANDROID_LIBRARIES := \
 
 LOCAL_STATIC_JAVA_LIBRARY := legacy-android-test
 
-LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res
-
 LOCAL_JAR_EXCLUDE_FILES := none
 
 LOCAL_SRC_FILES := $(call all-java-files-under, src)
 
+LOCAL_RESOURCE_DIR := \
+        $(LOCAL_PATH)/res
+
 include frameworks/base/packages/SettingsLib/common.mk
 
 include $(BUILD_STATIC_JAVA_LIBRARY)
-
-# For the test package.
-include $(call all-makefiles-under, $(LOCAL_PATH))
-
