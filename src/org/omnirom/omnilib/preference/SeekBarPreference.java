@@ -36,7 +36,7 @@ public class SeekBarPreference extends Preference implements OnSeekBarChangeList
     private final String TAG = getClass().getName();
 
     private static final String ANDROIDNS = "http://schemas.android.com/apk/res/android";
-    private static final String SETTINGS = "http://schemas.android.com/apk/res/com.android.settings";
+    private static final String SETTINGS = "http://schemas.android.com/apk/lib/res/org.omnirom.omnilib";
     private static final int DEFAULT_VALUE = 50;
 
     private int mMaxValue      = 100;
@@ -59,27 +59,22 @@ public class SeekBarPreference extends Preference implements OnSeekBarChangeList
     }
 
     private void initPreference(Context context, AttributeSet attrs) {
-        setValuesFromXml(attrs);
+        setValuesFromXml(context, attrs);
         setLayoutResource(R.layout.preference_seek_bar);
     }
 
-    private void setValuesFromXml(AttributeSet attrs) {
-        final TypedArray typedArray = getContext().obtainStyledAttributes(
-                      attrs, R.styleable.SeekBarPreference);
-
+    private void setValuesFromXml(Context context, AttributeSet attrs) {
         mMaxValue = attrs.getAttributeIntValue(ANDROIDNS, "max", 100);
         mMinValue = attrs.getAttributeIntValue(SETTINGS, "min", 0);
-        mUnitsLeft = getAttributeStringValue(attrs, SETTINGS, "unitsLeft", "");
-        String units = getAttributeStringValue(attrs, SETTINGS, "units", "");
-        mUnitsRight = getAttributeStringValue(attrs, SETTINGS, "unitsRight", units);
 
-        Integer id = typedArray.getResourceId(R.styleable.SeekBarPreference_unitsRight, 0);
+        Integer id = attrs.getAttributeResourceValue(SETTINGS, "unitsRight", 0);
         if (id > 0) {
-            mUnitsRight = getContext().getResources().getString(id);
+            mUnitsRight = context.getResources().getString(id);
         }
-        id = typedArray.getResourceId(R.styleable.SeekBarPreference_unitsLeft, 0);
+
+        id = attrs.getAttributeResourceValue(SETTINGS, "unitsLeft", 0);
         if (id > 0) {
-            mUnitsLeft = getContext().getResources().getString(id);
+            mUnitsLeft = context.getResources().getString(id);
         }
 
         try {
@@ -89,15 +84,6 @@ public class SeekBarPreference extends Preference implements OnSeekBarChangeList
         } catch(Exception e) {
             Log.e(TAG, "Invalid interval value", e);
         }
-        typedArray.recycle();
-    }
-
-    private String getAttributeStringValue(AttributeSet attrs, String namespace, String name, String defaultValue) {
-        String value = attrs.getAttributeValue(namespace, name);
-        if(value == null) {
-            value = defaultValue;
-        }
-        return value;
     }
 
     @Override

@@ -16,13 +16,13 @@
 ** limitations under the License.
 */
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
 
     <declare-styleable name="SeekBarPreference">
         <attr name="min" format="integer" />
         <attr name="interval" format="integer" />
-        <attr name="unitsLeft" format="string|reference" />
-        <attr name="unitsRight" format="string|reference" />
+        <attr name="unitsLeft" format="reference" />
+        <attr name="unitsRight" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="ColorSelectPreference">
