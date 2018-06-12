@@ -75,11 +75,11 @@ public class ColorSelectDialog extends AlertDialog implements
     private NotificationManager mNoMan;
     private Context mContext;
 
-    protected ColorSelectDialog(Context context, int initialColor, boolean showLedPreview) {
+    protected ColorSelectDialog(Context context, int initialColor, boolean showLedPreview, boolean withAlpha) {
         super(context);
         mContext = context;
         mShowLedPreview = showLedPreview;
-        mWithAlpha = false;
+        mWithAlpha = withAlpha;
         mMultiColor = getContext().getResources().getBoolean(R.bool.config_has_multi_color_led);
         init(initialColor);
     }

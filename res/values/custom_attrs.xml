@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <!--
 /*
 ** Copyright 2013, The ChameleonOS Open Source Project
@@ -16,8 +17,8 @@
 ** limitations under the License.
 */
 -->
-<resources>
 
+<resources>
     <declare-styleable name="SeekBarPreference">
         <attr name="min" format="integer" />
         <attr name="interval" format="integer" />
@@ -27,5 +28,6 @@
 
     <declare-styleable name="ColorSelectPreference">
         <attr name="ledPreview" format="boolean" />
+        <attr name="withAlpha" format="boolean" />
     </declare-styleable>
 </resources>
