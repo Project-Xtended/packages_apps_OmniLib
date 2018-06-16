@@ -43,6 +43,7 @@ public class ColorSelectPreference extends Preference implements DialogInterface
     private Dialog mDialog;
 
     private boolean mShowLedPreview;
+    private boolean mShowMultiColor;
     private boolean mWithAlpha;
 
     /**
@@ -85,6 +86,12 @@ public class ColorSelectPreference extends Preference implements DialogInterface
                 mShowLedPreview = (useLedPreview.type == TypedValue.TYPE_INT_BOOLEAN
                                 && useLedPreview.data != 0);
             }
+            final TypedValue useMultiColor = attributes.peekValue(
+                    R.styleable.ColorSelectPreference_multiColor);
+            if (useMultiColor != null) {
+                mShowMultiColor = (useMultiColor.type == TypedValue.TYPE_INT_BOOLEAN
+                                && useMultiColor.data != 0);
+            }
         }
     }
 
@@ -126,7 +133,7 @@ public class ColorSelectPreference extends Preference implements DialogInterface
 
     public Dialog getDialog() {
         final ColorSelectDialog d = new ColorSelectDialog(getContext(),
-                0xFF000000 | mColorValue, mShowLedPreview, mWithAlpha);
+                0xFF000000 | mColorValue, mShowMultiColor, mShowLedPreview, mWithAlpha);
 
         d.setButton(AlertDialog.BUTTON_POSITIVE, mResources.getString(R.string.ok),
                 new DialogInterface.OnClickListener() {
@@ -172,5 +179,9 @@ public class ColorSelectPreference extends Preference implements DialogInterface
 
     public void setWithLedPreview(boolean value) {
         mShowLedPreview = value;
+    }
+
+    public void setWithMultiColor(boolean value) {
+        mShowMultiColor = value;
     }
 }
