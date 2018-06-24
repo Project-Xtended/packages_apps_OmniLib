@@ -20,9 +20,9 @@ package org.omnirom.omnilib.actions;
 import android.content.Context;
 import android.content.Intent;
 import android.os.UserHandle;
+import android.provider.Settings;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.provider.Settings;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
@@ -39,6 +39,7 @@ public class OmniAction {
     public String type = null;
     public String setting = null;
     public String setting_type = null;
+    public String runner = null;
 
     private Context mContext;
 
@@ -75,11 +76,19 @@ public class OmniAction {
                 case "title":
                     title = mContext.getString(attrs.getAttributeResourceValue(i, 0));
                     break;
+                case "runner":
+                    runner = attrs.getAttributeValue(i);
+                    break;
             }
         }
     }
 
     public void execute() {
+        if (runner != null) {
+            executeRunner();
+            return;
+        }
+
         if (broadcast != null) {
             executeBroadcast();
             return;
@@ -92,21 +101,19 @@ public class OmniAction {
     }
 
     private void executeBroadcast() {
-        if (broadcast != null) {
-            Intent i = new Intent(broadcast);
+        Intent i = new Intent(broadcast);
 
-            if (value != null) {
-                switch (value_type) {
-                    case "boolean":
-                        i.putExtra(value_key, Boolean.parseBoolean(value));
-                        break;
-                    default:
-                        i.putExtra(value_key, value);
-                }
+        if (value != null) {
+            switch (value_type) {
+                case "boolean":
+                    i.putExtra(value_key, Boolean.parseBoolean(value));
+                    break;
+                default:
+                    i.putExtra(value_key, value);
             }
-
-            mContext.sendBroadcastAsUser(i, UserHandle.CURRENT);
         }
+
+        mContext.sendBroadcastAsUser(i, UserHandle.CURRENT);
     }
 
     private void executeSetting() {
@@ -131,6 +138,18 @@ public class OmniAction {
                         break;
                 }
                 break;
+        }
+    }
+
+    private void executeRunner() {
+        try {
+            Class mRunner = Class.forName(runner);
+            Constructor<?> constructor = mRunner.getDeclaredConstructor(new Class[]{Context.class});
+            Object object = constructor.newInstance(mContext);
+            Method run = mRunner.getDeclaredMethod("run", new Class[]{String.class});
+            run.invoke(object, value);
+        } catch (Exception e) {
+            Log.e(TAG, "Runner", e);
         }
     }
 }
