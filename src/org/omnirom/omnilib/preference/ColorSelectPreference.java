@@ -135,7 +135,7 @@ public class ColorSelectPreference extends Preference implements DialogInterface
         final ColorSelectDialog d = new ColorSelectDialog(getContext(),
                 0xFF000000 | mColorValue, mShowMultiColor, mShowLedPreview, mWithAlpha);
 
-        d.setButton(AlertDialog.BUTTON_POSITIVE, mResources.getString(R.string.ok),
+        d.setButton(AlertDialog.BUTTON_POSITIVE, mResources.getString(android.R.string.ok),
                 new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -149,7 +149,7 @@ public class ColorSelectPreference extends Preference implements DialogInterface
                 callChangeListener(new Integer(mColorValue));
             }
         });
-        d.setButton(AlertDialog.BUTTON_NEGATIVE, mResources.getString(R.string.cancel),
+        d.setButton(AlertDialog.BUTTON_NEGATIVE, mResources.getString(android.R.string.cancel),
                 new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

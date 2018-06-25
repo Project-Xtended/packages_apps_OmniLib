@@ -18,10 +18,7 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="font_sample_text">11:57</string>
-    <string name="ok">OK</string>
     <string name="action_save">Save</string>
-    <string name="cancel">Cancel</string>
     <string name="disabled_entry">Disabled</string>
     <string name="profile_choose_app">Choose app</string>
     <string name="not_ready_summary">Resolving...</string>
